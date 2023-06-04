@@ -15,9 +15,22 @@
  * limitations under the License.
  */
 
-plugins {
-    buildsrc.conventions.base
-}
+package buildsrc.sonar2
 
-group = "net.thauvin.erik"
-version = "1.4.0-SNAPSHOT"
+import buildsrc.sonar2.parameters.AnalysisParameters
+import org.gradle.api.plugins.ExtensionAware
+import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Nested
+import javax.inject.Inject
+
+abstract class Sonar2Extension @Inject constructor(
+    @get:Nested
+    val parameters: AnalysisParameters
+) : ExtensionAware {
+
+    abstract val sonarScannerVersion: Property<String>
+
+    init {
+        extensions.add("parameters", parameters)
+    }
+}

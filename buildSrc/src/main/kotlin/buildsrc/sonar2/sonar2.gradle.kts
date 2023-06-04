@@ -15,9 +15,6 @@
  * limitations under the License.
  */
 
-plugins {
-    buildsrc.conventions.base
-}
+package buildsrc.sonar2
 
-group = "net.thauvin.erik"
-version = "1.4.0-SNAPSHOT"
+apply<Sonar2PluginInternal>()

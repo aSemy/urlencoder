@@ -20,7 +20,8 @@ import org.jetbrains.dokka.gradle.DokkaTask
 plugins {
     buildsrc.conventions.lang.`kotlin-jvm`
     buildsrc.conventions.publishing
-    buildsrc.conventions.sonarqube
+//    buildsrc.conventions.sonarqube
+    buildsrc.sonar2.sonar2
     id("com.github.ben-manes.versions")
 }
 
@@ -77,5 +78,15 @@ publishing {
             artifactId = "${rootProject.name}-lib"
             artifact(tasks.javadocJar)
         }
+    }
+}
+
+sonar {
+    parameters {
+        hostUrl.set("https://sonarcloud.io")
+        sourceEncoding.set("UTF-8")
+        projectName.set(rootProject.name)
+        projectKey.set("ethauvin_${rootProject.name}")
+        organization.set("ethauvin-github")
     }
 }

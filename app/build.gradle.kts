@@ -22,6 +22,7 @@ plugins {
     buildsrc.conventions.publishing
     id("application")
     id("com.github.ben-manes.versions")
+//    buildsrc.sonar2.sonar2
 }
 
 description = "A simple defensive application to encode/decode URL components"
